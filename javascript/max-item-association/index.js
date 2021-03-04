@@ -60,4 +60,3 @@ function maxItemAssociation(associations) {
   };
   
   module.exports = maxItemAssociation;
-  
