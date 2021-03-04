@@ -1,2 +1,1 @@
-# igamnazarova-diana-otus
-Home tasks from the OTUS JavaScript Developer course(Professional)
+# Home tasks from the OTUS JavaScript Developer course(Professional)
