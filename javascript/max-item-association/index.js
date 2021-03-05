@@ -27,8 +27,7 @@ function maxItemAssociation(associations) {
   const createDictionaryItemNeighbors = (array) => {
     let dictionary = {};
     for (let [firstItem, secondItem] of array) {
-      if (firstItem == undefined && secondItem == undefined) return [];
-      else if (firstItem == undefined || secondItem == undefined) return [];
+      if (firstItem == undefined || secondItem == undefined) return [];
       if (dictionary[firstItem] == undefined) dictionary[firstItem] = [];
       if (dictionary[secondItem] == undefined) dictionary[secondItem] = [];
       dictionary[firstItem].push(secondItem);
