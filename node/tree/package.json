@@ -1,0 +1,17 @@
+{
+  "name": "tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tree.js",
+  "scripts": {
+    "start": "node",
+    "test-one": "npm run start tree -- ./test-tree",
+    "test-two": "npm run start tree -- ./test-tree/tempdir",
+    "test-three": "npm run start tree -- ./test-tree/tempdir/exdir"
+  },
+  "author": "Igamnazarova Diana",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^3.2.0"
+  }
+}
