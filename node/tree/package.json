@@ -5,9 +5,9 @@
   "main": "tree.js",
   "scripts": {
     "start": "node",
-    "test-one": "npm run start tree -- ./test-tree",
-    "test-two": "npm run start tree -- ./test-tree/tempdir",
-    "test-three": "npm run start tree -- ./test-tree/tempdir/exdir"
+    "test-one": "npm run start tree -- ./test-dir",
+    "test-two": "npm run start tree -- ./test-dir/test-dir-1",
+    "test-three": "npm run start tree -- ./test-dir/test-dir-1/test-dir-2"
   },
   "author": "Igamnazarova Diana",
   "license": "MIT",

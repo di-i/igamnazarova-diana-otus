@@ -2,13 +2,14 @@ let path = require('path');
 let fs = require('fs');
 let async = require('async');
 
-let dictOfFilesAndDirs = { files: [], dirs: [] };
+let outputDictOfFilesAndDirs = { files: [], dirs: [] };
 
-function getFiles(dirPath, callback) {
+function getPathsOfFilesAndDirs(dirPath, callback) {
   fs.readdir(dirPath, function (err, files) {
     if (err) return callback(err);
 
     let filePaths = [];
+
     async.eachSeries(
       files,
       function (fileName, eachCallback) {
@@ -18,18 +19,17 @@ function getFiles(dirPath, callback) {
           if (err) return eachCallback(err);
 
           if (stat.isDirectory()) {
-            getFiles(filePath, function (err, subDirFiles) {
+            getPathsOfFilesAndDirs(filePath, function (err, subDirFiles) {
               if (err) return eachCallback(err);
-              dictOfFilesAndDirs['dirs'].push(filePath);
+              outputDictOfFilesAndDirs['dirs'].push(filePath);
               filePaths = filePaths.concat(subDirFiles);
               eachCallback(null);
             });
           } else {
             if (stat.isFile()) {
               filePaths.push(filePath);
-              dictOfFilesAndDirs['files'].push(filePath);
+              outputDictOfFilesAndDirs['files'].push(filePath);
             }
-
             eachCallback(null);
           }
         });
@@ -41,16 +41,16 @@ function getFiles(dirPath, callback) {
   });
 }
 
-function reverseDict(dict) {
+function reverseKeysOfDict(dict) {
   const keys = Object.keys(dict);
   let reversedDict = keys.map((key) => dict[key].reverse());
   return reversedDict;
 }
 
 function showFilesAndDirs(path) {
-  getFiles(path, function (err) {
-    reverseDict(dictOfFilesAndDirs);
-    console.log(err || dictOfFilesAndDirs);
+  getPathsOfFilesAndDirs(path, function (err) {
+    reverseKeysOfDict(outputDictOfFilesAndDirs);
+    console.log(err || outputDictOfFilesAndDirs);
   });
 }
 
