@@ -1,7 +1,7 @@
 # Домашнее задание
 ### promiseReduce - работа с асинхронными функциями
 
-###Цель:
+### Цель:
 Написать функцию
 
 promiseReduce(asyncFunctions, reduce, initialValue)
